@@ -1,0 +1,19 @@
+<section class="wrapper">
+  <h1>Carrinho</h1>
+  <div *ngIf="finalPrice === 0">Carrinho vazio</div>
+  <ul *ngIf="productsCart">
+    <li *ngFor="let product of productsCart">
+      <h3>{{ product.name }}</h3>
+      <strong>{{ product.totalPrice | currency: "R$" }}</strong>
+      <span
+        >Quantidade: <strong>{{ product.amount }}</strong>
+      </span>
+      <span (click)="remove(product)">
+        <mat-icon hoverAtribute aria-hidden="false" aria-label="delete"
+          >delete</mat-icon
+        >
+      </span>
+    </li>
+  </ul>
+  <strong>Valor toltal: {{ finalPrice | currency: "R$" }}</strong>
+</section>

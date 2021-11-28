@@ -1,0 +1,32 @@
+<main>
+  <h1>Lista de Produtos</h1>
+
+  <section class="product-list">
+    <ul>
+      <li *ngFor="let product of products">
+        <form (submit)="addToCart(product, $event)" [formGroup]="formValidator">
+          <img [src]="product.img" alt="" />
+          <h2>{{ product.name }}</h2>
+          <strong>{{ product.price | currency: "R$" }}</strong>
+          <div>
+            <span>Quantidade:</span>
+            <input type="text" formControlName="amount" />
+          </div>
+
+          <p>{{ product.description }}</p>
+          <button
+            hoverAtribute
+            type="submit"
+            [disabled]="formValidator.invalid"
+          >
+            Adionar no carrinho
+            <mat-icon color="primary">add_shopping_cart</mat-icon>
+          </button>
+        </form>
+      </li>
+    </ul>
+    <button hoverAtribute class="finish-button">
+      <a href="http://localhost:4200/cart">Finalizar Compra</a>
+    </button>
+  </section>
+</main>
